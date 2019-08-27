@@ -17,6 +17,9 @@ Application.java
 Link to main UI:
 http://localhost:8080
 
+Link to DB CONSOLE:
+http://localhost:8080/console
+
 chrisblogdance/home
 chrisblogdance/admin
 
