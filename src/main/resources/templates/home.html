@@ -13,6 +13,10 @@
 <body>
 
 	Home
+	
+	<div th:each="danceType : ${danceTypes}">
+		<p th:text="${danceType.name}"></p>
+	</div>
 
 </body>
 </html>

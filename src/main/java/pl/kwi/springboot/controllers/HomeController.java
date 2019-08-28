@@ -2,9 +2,10 @@ package pl.kwi.springboot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pl.kwi.springboot.db.entities.DanceTypeEntity;
 import pl.kwi.springboot.db.repositories.DanceTypeRepository;
 
 @Controller
@@ -12,16 +13,15 @@ import pl.kwi.springboot.db.repositories.DanceTypeRepository;
 public class HomeController {
 
 	@Autowired
-	private DanceTypeRepository danceTypeRepository;	
+	private DanceTypeRepository danceTypeRepository;
+	
+	@ModelAttribute
+	public void addAttributes(Model model) {
+	    model.addAttribute("danceTypes", danceTypeRepository.findAll());
+	}
 	
 	@RequestMapping
-	public String displayPage() {
-		
-		Iterable<DanceTypeEntity> danceTypes = danceTypeRepository.findAll();
-		for (DanceTypeEntity danceTypeEntity : danceTypes) {
-			System.out.println(danceTypeEntity.getName());
-		}
-		
+	public String displayPage() {		
 		return "home";
 	}
 
