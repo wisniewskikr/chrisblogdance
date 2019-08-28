@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USER")
-public class UserEntity {
+@Table(name="DANCE_TYPE")
+public class DanceTypeEntity {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,10 +19,10 @@ public class UserEntity {
     private String name;
     
     
-	public UserEntity() {
+	public DanceTypeEntity() {
 	}
 	
-	public UserEntity(String name) {
+	public DanceTypeEntity(String name) {
 		this.name = name;
 	}
 

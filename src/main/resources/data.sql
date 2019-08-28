@@ -1,1 +1,9 @@
-insert into USER (name) values ('Chris');
+insert into DANCE_TYPE (id, name) values (1,'Salsa Cubana');
+insert into DANCE_TYPE (id, name) values (2,'Salsa LA');
+insert into DANCE_TYPE (id, name) values (3,'Salsa NY');
+insert into DANCE_TYPE (id, name) values (4,'Bachata Social');
+insert into DANCE_TYPE (id, name) values (5,'Bachata Sensual');
+insert into DANCE_TYPE (id, name) values (6,'Bachata Dominicana');
+insert into DANCE_TYPE (id, name) values (7,'Kizomba Social');
+insert into DANCE_TYPE (id, name) values (8,'Kizomba Tradicional');
+insert into DANCE_TYPE (id, name) values (9,'Kizomba Urbankizz');
