@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.kwi.springboot.db.repositories.ArticleRepository;
 import pl.kwi.springboot.db.repositories.DanceTypeRepository;
 
 @Controller
@@ -15,9 +16,13 @@ public class HomeController {
 	@Autowired
 	private DanceTypeRepository danceTypeRepository;
 	
+	@Autowired
+	private ArticleRepository articleRepository;
+	
 	@ModelAttribute
 	public void addAttributes(Model model) {
 	    model.addAttribute("danceTypes", danceTypeRepository.findAll());
+	    model.addAttribute("articles", articleRepository.findAll());
 	}
 	
 	@RequestMapping

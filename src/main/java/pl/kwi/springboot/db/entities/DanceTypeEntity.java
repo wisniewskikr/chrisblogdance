@@ -1,10 +1,15 @@
 package pl.kwi.springboot.db.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +22,13 @@ public class DanceTypeEntity {
  
     @Column(nullable = false)
     private String name;
+    
+    @OneToMany(
+        mappedBy = "danceType",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<ArticleEntity> articles = new ArrayList<ArticleEntity>();
     
     
 	public DanceTypeEntity() {
@@ -39,6 +51,13 @@ public class DanceTypeEntity {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}   
+	}
+
+	public List<ArticleEntity> getArticles() {
+		return articles;
+	}
+	public void setArticles(List<ArticleEntity> articles) {
+		this.articles = articles;
+	} 		
 
 }

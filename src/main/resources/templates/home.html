@@ -23,7 +23,9 @@
 		
 		<!-- Right -->
 	    <div class="tab rightTab">
-	    	Tab 2
+	    	<div th:each="article : ${articles}">
+				<p th:text="${article.title}"></p>
+			</div>
 	    </div>
 	    
 	</div>
