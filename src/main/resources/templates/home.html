@@ -12,18 +12,25 @@
 
 <body>
 
-	<div class="content">
+	<div class="content" th:object="${command}">
 		
 		<!-- Left -->
 		<div class="tab leftTab">
-			<div th:each="danceType : ${danceTypes}">
+			<!-- div th:each="danceType : *{danceTypes}">
 				<p th:text="${danceType.name}"></p>
-			</div>
+			</div -->
+			
+			<ul>
+			  <li th:each="danceType : *{danceTypes}">
+			    <input type="radio" th:field="*{selectedDanceType}" th:value="${danceType}" />
+			    <label th:for="${#ids.prev('selectedDanceType')}" th:text="${danceType.name}">Dance Type</label>
+			  </li>
+			</ul>			
 		</div>
 		
 		<!-- Right -->
 	    <div class="tab rightTab">
-	    	<div th:each="article : ${articles}">
+	    	<div th:each="article : *{articles}">
 				<p th:text="${article.title}"></p>
 			</div>
 	    </div>

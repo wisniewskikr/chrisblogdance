@@ -2,10 +2,10 @@ package pl.kwi.springboot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.kwi.springboot.commands.HomeCommand;
 import pl.kwi.springboot.db.repositories.ArticleRepository;
 import pl.kwi.springboot.db.repositories.DanceTypeRepository;
 
@@ -19,14 +19,10 @@ public class HomeController {
 	@Autowired
 	private ArticleRepository articleRepository;
 	
-	@ModelAttribute
-	public void addAttributes(Model model) {
-	    model.addAttribute("danceTypes", danceTypeRepository.findAll());
-	    model.addAttribute("articles", articleRepository.findAll());
-	}
-	
 	@RequestMapping
-	public String displayPage() {		
+	public String displayPage(@ModelAttribute("command") HomeCommand command) {
+		command.setDanceTypes(danceTypeRepository.findAll());
+		command.setArticles(articleRepository.findAll());
 		return "home";
 	}
 
