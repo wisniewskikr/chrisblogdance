@@ -21,6 +21,9 @@ public class HomeController {
 	
 	@RequestMapping
 	public String displayPage(@ModelAttribute("command") HomeCommand command) {
+		
+		System.out.println(command.getSelectedDanceType());
+		
 		command.setDanceTypes(danceTypeRepository.findAll());
 		command.setArticles(articleRepository.findAll());
 		return "home";

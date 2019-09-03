@@ -16,16 +16,15 @@
 		
 		<!-- Left -->
 		<div class="tab leftTab">
-			<!-- div th:each="danceType : *{danceTypes}">
-				<p th:text="${danceType.name}"></p>
-			</div -->
-			
-			<ul>
-			  <li th:each="danceType : *{danceTypes}">
-			    <input type="radio" th:field="*{selectedDanceType}" th:value="${danceType}" />
-			    <label th:for="${#ids.prev('selectedDanceType')}" th:text="${danceType.name}">Dance Type</label>
-			  </li>
-			</ul>			
+			<form th:action="@{{base}/home(base=${basePath})}" method="post">						
+				<ul>
+				  <li th:each="danceType : *{danceTypes}">
+				    <input type="radio" th:field="*{selectedDanceType}" th:value="${danceType.id}" />
+				    <label th:for="${#ids.prev('selectedDanceType')}" th:text="${danceType.name}">Dance Type</label>
+				  </li>
+				</ul>
+				<button type="submit" class="button" name="action" value="Next">Submit</button>
+			</form>			
 		</div>
 		
 		<!-- Right -->

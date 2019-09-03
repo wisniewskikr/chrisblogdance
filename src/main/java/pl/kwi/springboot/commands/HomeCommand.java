@@ -6,10 +6,10 @@ import pl.kwi.springboot.db.entities.DanceTypeEntity;
 public class HomeCommand {
 	
 	
-	Iterable<DanceTypeEntity> danceTypes;
-	DanceTypeEntity selectedDanceType;	
-	Iterable<ArticleEntity> articles;
-	ArticleEntity selectedArticle;
+	private Iterable<DanceTypeEntity> danceTypes;
+	private String selectedDanceType;	
+	private Iterable<ArticleEntity> articles;
+	private String selectedArticle;
 	
 	
 	public Iterable<DanceTypeEntity> getDanceTypes() {
@@ -19,26 +19,26 @@ public class HomeCommand {
 		this.danceTypes = danceTypes;
 	}
 	
-	public DanceTypeEntity getSelectedDanceType() {
+	public String getSelectedDanceType() {
 		return selectedDanceType;
 	}
-	public void setSelectedDanceType(DanceTypeEntity selectedDanceType) {
+	public void setSelectedDanceType(String selectedDanceType) {
 		this.selectedDanceType = selectedDanceType;
 	}
-
+	
 	public Iterable<ArticleEntity> getArticles() {
 		return articles;
 	}
 	public void setArticles(Iterable<ArticleEntity> articles) {
 		this.articles = articles;
-	}	
+	}
 	
-	public ArticleEntity getSelectedArticle() {
+	public String getSelectedArticle() {
 		return selectedArticle;
 	}
-	public void setSelectedArticle(ArticleEntity selectedArticle) {
+	public void setSelectedArticle(String selectedArticle) {
 		this.selectedArticle = selectedArticle;
-	}
+	}	
 	
 
 }
