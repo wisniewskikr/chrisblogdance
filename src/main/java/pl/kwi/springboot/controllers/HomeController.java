@@ -22,10 +22,14 @@ public class HomeController {
 	@RequestMapping
 	public String displayPage(@ModelAttribute("command") HomeCommand command) {
 		
-		System.out.println(command.getSelectedDanceType());
-		
 		command.setDanceTypes(danceTypeRepository.findAll());
-		command.setArticles(articleRepository.findAll());
+		
+		if (command.getSelectedDanceType() != 0) {
+			command.setArticles(articleRepository.findByDanceTypeId(command.getSelectedDanceType()));
+		} else {
+			command.setArticles(articleRepository.findAll());
+		}		
+		
 		return "home";
 	}
 
