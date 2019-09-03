@@ -7,9 +7,9 @@ public class HomeCommand {
 	
 	
 	private Iterable<DanceTypeEntity> danceTypes;
-	private String selectedDanceType;	
+	private long selectedDanceType;	
 	private Iterable<ArticleEntity> articles;
-	private String selectedArticle;
+	private long selectedArticle;
 	
 	
 	public Iterable<DanceTypeEntity> getDanceTypes() {
@@ -19,10 +19,10 @@ public class HomeCommand {
 		this.danceTypes = danceTypes;
 	}
 	
-	public String getSelectedDanceType() {
+	public long getSelectedDanceType() {
 		return selectedDanceType;
 	}
-	public void setSelectedDanceType(String selectedDanceType) {
+	public void setSelectedDanceType(long selectedDanceType) {
 		this.selectedDanceType = selectedDanceType;
 	}
 	
@@ -33,12 +33,12 @@ public class HomeCommand {
 		this.articles = articles;
 	}
 	
-	public String getSelectedArticle() {
+	public long getSelectedArticle() {
 		return selectedArticle;
 	}
-	public void setSelectedArticle(String selectedArticle) {
+	public void setSelectedArticle(long selectedArticle) {
 		this.selectedArticle = selectedArticle;
-	}	
-	
+	}
+		
 
 }
