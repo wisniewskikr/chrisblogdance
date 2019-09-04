@@ -1,5 +1,7 @@
 package pl.kwi.springboot.db.entities;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +22,9 @@ public class ArticleEntity {
  
     @Column(nullable = false)
     private String title;
+    
+    @Column(nullable = false)
+    private Date date;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dance_type_id")
@@ -46,6 +51,13 @@ public class ArticleEntity {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}	
+
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public DanceTypeEntity getDanceType() {

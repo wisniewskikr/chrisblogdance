@@ -30,7 +30,9 @@
 		<!-- Right -->
 	    <div class="tab rightTab">
 	    	<div th:each="article : *{articles}">
-				<p th:text="${article.title}"></p>
+				<div th:text="${article.title}"></div>
+				<div th:text="${article.date}"></div>
+				<hr/>
 			</div>
 			<div th:if="*{#lists.isEmpty(articles)}">
 				There are no articles.
