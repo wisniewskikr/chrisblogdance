@@ -32,6 +32,9 @@
 	    	<div th:each="article : *{articles}">
 				<p th:text="${article.title}"></p>
 			</div>
+			<div th:if="*{#lists.isEmpty(articles)}">
+				There are no articles.
+			</div>
 	    </div>
 	    
 	</div>
