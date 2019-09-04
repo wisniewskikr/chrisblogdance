@@ -26,6 +26,9 @@ public class ArticleEntity {
     @Column(nullable = false)
     private Date date;
     
+    @Column(nullable = false)
+    private String pair;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dance_type_id")
     private DanceTypeEntity danceType;
@@ -58,6 +61,13 @@ public class ArticleEntity {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}	
+
+	public String getPair() {
+		return pair;
+	}
+	public void setPair(String pair) {
+		this.pair = pair;
 	}
 
 	public DanceTypeEntity getDanceType() {
