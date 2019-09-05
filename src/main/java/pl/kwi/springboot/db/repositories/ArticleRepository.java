@@ -10,7 +10,7 @@ import pl.kwi.springboot.db.entities.ArticleEntity;
 
 public interface ArticleRepository extends CrudRepository<ArticleEntity, Long> {
 	
-	@Query("SELECT a FROM ArticleEntity a WHERE a.danceType.id = :danceTypeId")
-    public List<ArticleEntity> findByDanceTypeId(@Param("danceTypeId") long danceTypeId);
+	@Query("SELECT a FROM ArticleEntity a WHERE a.danceType.id IN (:danceTypeIds)")
+    public List<ArticleEntity> findByDanceTypeIds(@Param("danceTypeIds") List<Long> danceTypeIds);
 	
 }
