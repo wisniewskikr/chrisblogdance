@@ -1,5 +1,8 @@
 package pl.kwi.springboot.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pl.kwi.springboot.db.entities.ArticleEntity;
 import pl.kwi.springboot.db.entities.DanceTypeEntity;
 
@@ -7,7 +10,7 @@ public class HomeCommand {
 	
 	
 	private Iterable<DanceTypeEntity> danceTypes;
-	private long selectedDanceType;	
+	private List<Long> selectedDanceTypes = new ArrayList<Long>();	
 	private Iterable<ArticleEntity> articles;
 	private long selectedArticle;
 	
@@ -17,13 +20,13 @@ public class HomeCommand {
 	}
 	public void setDanceTypes(Iterable<DanceTypeEntity> danceTypes) {
 		this.danceTypes = danceTypes;
-	}
+	}	
 	
-	public long getSelectedDanceType() {
-		return selectedDanceType;
+	public List<Long> getSelectedDanceTypes() {
+		return selectedDanceTypes;
 	}
-	public void setSelectedDanceType(long selectedDanceType) {
-		this.selectedDanceType = selectedDanceType;
+	public void setSelectedDanceTypes(List<Long> selectedDanceTypes) {
+		this.selectedDanceTypes = selectedDanceTypes;
 	}
 	
 	public Iterable<ArticleEntity> getArticles() {
@@ -39,6 +42,6 @@ public class HomeCommand {
 	public void setSelectedArticle(long selectedArticle) {
 		this.selectedArticle = selectedArticle;
 	}
-		
+			
 
 }

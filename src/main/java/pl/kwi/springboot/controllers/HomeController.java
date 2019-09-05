@@ -23,12 +23,15 @@ public class HomeController {
 	public String displayPage(@ModelAttribute("command") HomeCommand command) {
 		
 		command.setDanceTypes(danceTypeRepository.findAll());
+		command.setArticles(articleRepository.findAll());
 		
-		if (command.getSelectedDanceType() != 0) {
-			command.setArticles(articleRepository.findByDanceTypeId(command.getSelectedDanceType()));
-		} else {
-			command.setArticles(articleRepository.findAll());
-		}		
+		System.out.println(command.getSelectedDanceTypes());
+		
+//		if (command.getSelectedDanceType() != 0) {
+//			command.setArticles(articleRepository.findByDanceTypeId(command.getSelectedDanceType()));
+//		} else {
+//			command.setArticles(articleRepository.findAll());
+//		}		
 		
 		return "home";
 	}
