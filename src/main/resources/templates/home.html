@@ -29,7 +29,7 @@
 		<!-- Right -->
 	    <div class="tab rightTab">
 	    	<div th:each="article : *{articles}">
-				<div th:text="${article.title}"></div>
+				<a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a>
 				<div th:text="${article.date}"></div>
 				<div th:text="${article.pair}"></div>
 				<hr/>
