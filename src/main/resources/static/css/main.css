@@ -22,3 +22,7 @@ body {
 	width: 65%;
 	float:left; 
 }
+
+.article {
+	background-color: white;
+}
