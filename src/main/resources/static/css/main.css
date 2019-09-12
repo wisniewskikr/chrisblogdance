@@ -19,3 +19,11 @@ body, html {
 	background-color: white;
 	margin: 10px;
 }
+
+.container-margin {
+	margin-top:150px;
+}
+
+.navbar-color {
+	background-color: white;
+}
