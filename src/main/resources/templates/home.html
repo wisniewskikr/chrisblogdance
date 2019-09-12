@@ -14,14 +14,14 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>				
 </head>
 
-<body>
+<body class="bg">
 
 	<div class="container" th:object="${command}">
 		<h3>Chris Blog Dance</h3>
 		<div class="row">
 			
 			<!-- Left -->
-			<div class="col-md-3">
+			<div class="col-md-3 column">
 				<form th:action="@{{base}/home(base=${basePath})}" method="post">						
 					<!-- ul>
 					  <li th:each="danceType : *{danceTypes}">
@@ -41,7 +41,7 @@
 			</div>
 			
 			<!-- Right -->
-		    <div class="col-md-6">
+		    <div class="col-md-8 column">
 		    	<div th:each="article : *{articles}">
 					<a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a>
 					<div th:text="${article.date}"></div>
