@@ -34,13 +34,7 @@
 			<!-- Left -->
 			<div class="col-md-3 column">
 				<form th:action="@{{base}/home(base=${basePath})}" method="post">						
-					<!-- ul>
-					  <li th:each="danceType : *{danceTypes}">
-					    <input type="checkbox" th:field="*{selectedDanceTypes}" th:value="${danceType.id}" onclick="document.querySelector('form').submit()"/>
-					    <label th:for="${#ids.prev('selectedDanceTypes')}" th:text="${danceType.name}">Dance Type</label>
-					  </li>
-					</ul -->
-					
+										
 					<div th:each="danceType : *{danceTypes}">
 						<div class="checkbox">					    	
 					    	<input type="checkbox" th:field="*{selectedDanceTypes}" th:value="${danceType.id}" onclick="document.querySelector('form').submit()"/>
@@ -54,10 +48,10 @@
 			<!-- Right -->
 		    <div class="col-md-8 column">
 		    	<div th:each="article : *{articles}">
+		    		<hr/>
 					<a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a>
 					<div th:text="${article.date}"></div>
-					<div th:text="${article.pair}"></div>
-					<hr/>
+					<div th:text="${article.pair}"></div>					
 				</div>
 				<div th:if="*{#lists.isEmpty(articles)}">
 					There are no articles.
