@@ -49,10 +49,17 @@
 		    <div class="col-md-8 column">
 		    	<div th:each="article : *{articles}">
 		    		<hr/>
-					<a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a>
-					<div th:text="${article.date}"></div>
-					<div th:text="${article.pair}"></div>
-					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button>					
+		    		<div class="media">
+				    <div class="media-left">
+				    	<img th:src="@{/images/thumbnail.jpg}" class="media-object" style="width:240px" data-toggle="modal" data-target="#myModal"/>
+				    </div>
+				    <div class="media-body">
+						<!-- a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a-->
+						<h4 th:text="${article.title}"></h4>
+						<div th:text="${article.date}"></div>
+						<div th:text="${article.pair}"></div>							
+				    </div>
+				  </div>		    						
 				</div>
 				<div th:if="*{#lists.isEmpty(articles)}">
 					There are no articles.
