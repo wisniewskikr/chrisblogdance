@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Table(name="ARTICLE")
 public class ArticleEntity {
 	
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -32,6 +33,12 @@ public class ArticleEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dance_type_id")
     private DanceTypeEntity danceType;
+    
+    @Column(nullable = false, name = "YOUTUBE")
+    private String youTube;
+    
+    @Column(nullable = false)
+    private String thumb;
     
     
 	public ArticleEntity() {
@@ -75,7 +82,21 @@ public class ArticleEntity {
 	}
 	public void setDanceType(DanceTypeEntity danceType) {
 		this.danceType = danceType;
-	}  	
+	}
+
+	public String getYouTube() {
+		return youTube;
+	}
+	public void setYouTube(String youTube) {
+		this.youTube = youTube;
+	}
+
+	public String getThumb() {
+		return thumb;
+	}
+	public void setThumb(String thumb) {
+		this.thumb = thumb;
+	}	
 	
 
 }

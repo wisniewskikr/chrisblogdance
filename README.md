@@ -33,3 +33,7 @@ Dance types:
 - Kizomba Social
 - Kizomba Tradicional
 - Kizomba Urbankizz
+
+
+Create Thumbnail:
+https://boingboing.net/features/getthumbs
