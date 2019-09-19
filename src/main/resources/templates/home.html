@@ -51,7 +51,8 @@
 		    		<hr/>
 		    		<div class="media">
 				    <div class="media-left">
-				    	<img th:src="@{/images/1.jpg}" class="media-object pointer" style="width:240px" data-toggle="modal" data-target="#myModal"/>
+				    	<img th:src="@{/images/{thumb}(thumb=${article.thumb})}" class="media-object pointer openModal" style="width:240px" 
+				    	data-toggle="modal" data-target="#myModal" th:attr="youTube=${article.youTube}"/>
 				    </div>
 				    <div class="media-body">
 						<!-- a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a-->
@@ -78,7 +79,7 @@
           <h4 class="modal-title">Modal Header</h4>
         </div>
         <div class="modal-body" id="yt-player">
-          <iframe width="860" height="750" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+          <iframe width="860" height="750" class="iframe">
 		</iframe>
         </div>
         <div class="modal-footer">
@@ -92,6 +93,11 @@
 <script type="text/javascript">
 $('#myModal').on('hidden.bs.modal', function () {
     $("#myModal iframe").attr("src", $("#myModal iframe").attr("src"));
+});
+
+$(document).on("click", ".openModal", function () {
+   var youTube = $(this).attr('youTube');    
+   $(".modal-body .iframe").attr('src', youTube);
 });
 </script>
 </body>
