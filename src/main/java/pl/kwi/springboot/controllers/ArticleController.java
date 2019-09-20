@@ -20,7 +20,7 @@ public class ArticleController {
 	public String displayPage(@PathVariable(name="articleId") long articleId, 
 							  @ModelAttribute("command") ArticleCommand command) {
 		
-		command.setArticle(articleRepository.findOne(articleId));				
+//		command.setArticle(articleRepository.findOne(articleId));				
 		return "article";
 	}
 
