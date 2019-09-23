@@ -1,6 +1,7 @@
 package pl.kwi.springboot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pl.kwi.springboot.commands.HomeCommand;
+import pl.kwi.springboot.db.entities.ArticleEntity;
 import pl.kwi.springboot.db.repositories.ArticleRepository;
 import pl.kwi.springboot.db.repositories.DanceTypeRepository;
 
@@ -27,8 +29,9 @@ public class HomeController {
 		command.setDanceTypes(danceTypeRepository.findAll());
 				
 		if (command.getSelectedDanceTypes().isEmpty()) {
-			Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
-			command.setArticles(articleRepository.findAll(firstPageWithTwoElements));			
+			Pageable firstPageWithTwoElements = PageRequest.of(0, 2);	
+			Page<ArticleEntity> page = articleRepository.findAllAsPage(firstPageWithTwoElements);
+			command.setArticles(page.getContent());
 		} else {
 			command.setArticles(articleRepository.findByDanceTypeIds(command.getSelectedDanceTypes()));
 		}		
