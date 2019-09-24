@@ -36,3 +36,11 @@ body, html {
 .pointer {
 	cursor: pointer;
 }
+
+.pager {
+	float: left;
+}
+
+.pagination {
+	float: left;
+}
