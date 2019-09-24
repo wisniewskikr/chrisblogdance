@@ -14,3 +14,8 @@ insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) value
 insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (4,'Salsa LA 2 Title', '2019-09-02', 'Chris&Iga', 2, 'https://www.youtube.com/embed/fZ9WiuJPnNA', '4.jpg');
 insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (5,'Salsa NY 1 Title', '2019-09-03', 'Chris&Iga', 3, 'https://www.youtube.com/embed/cUusX1Js6R0', '5.jpg');
 insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (6,'Salsa NY 2 Title', '2019-09-03', 'Chris&Iga', 3, 'https://www.youtube.com/embed/5BDVvB7Xx1w', '6.jpg');
+insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (7,'Salsa NY 3 Title', '2019-09-03', 'Chris&Iga', 3, 'https://www.youtube.com/embed/5BDVvB7Xx1w', '6.jpg');
+insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (8,'Salsa NY 4 Title', '2019-09-03', 'Chris&Iga', 3, 'https://www.youtube.com/embed/5BDVvB7Xx1w', '6.jpg');
+insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (9,'Salsa NY 5 Title', '2019-09-03', 'Chris&Iga', 3, 'https://www.youtube.com/embed/5BDVvB7Xx1w', '6.jpg');
+insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (10,'Salsa NY 6 Title', '2019-09-03', 'Chris&Iga', 3, 'https://www.youtube.com/embed/5BDVvB7Xx1w', '6.jpg');
+insert into ARTICLE (id, title, date, pair, dance_type_id, youTube, thumb) values (11,'Salsa NY 7 Title', '2019-09-03', 'Chris&Iga', 3, 'https://www.youtube.com/embed/5BDVvB7Xx1w', '6.jpg');
