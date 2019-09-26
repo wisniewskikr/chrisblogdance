@@ -37,12 +37,6 @@ body, html {
 	cursor: pointer;
 }
 
-.container-pagination {
-	display: block;
-  	margin-left: auto;
- 	margin-right: auto;
-}
-
 .pager {
 	float: left;
 }

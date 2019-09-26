@@ -72,7 +72,7 @@
 					</ul>
 					<ul class="pagination" th:each="page : *{pages}">					
 					    <li th:if="${#strings.equals(page, #strings.toString(command.currentPage))}" class="active"><a href="#" th:text="${page}"></a></li>
-						<li th:unless="${#strings.equals(page, #strings.toString(command.currentPage))}"><a href="#" th:text="${page}"></a></li>
+						<li th:unless="${#strings.equals(page, #strings.toString(command.currentPage))}"><a th:href="@{/home?currentPage={page}(page=${page})}" th:text="${page}"></a></li>
 				    </ul>
 				    <ul class="pager" th:if="*{displayNext}">
 				      <li class="next"><a href="#">Next</a></li>
