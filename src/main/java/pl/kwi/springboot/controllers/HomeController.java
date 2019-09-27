@@ -46,9 +46,9 @@ public class HomeController {
 	
 	private void handlePagination(HomeCommand command, Page<ArticleEntity> page) {
 		
-		List<String> pages = new ArrayList<String>();
+		List<Integer> pages = new ArrayList<Integer>();
 		for (int i = 1; i <= page.getTotalPages(); i++) {
-			pages.add(String.valueOf(i));
+			pages.add(i);
 		}
 		command.setPages(pages);
 		

@@ -13,7 +13,7 @@ public class HomeCommand {
 	private List<Long> selectedDanceTypes = new ArrayList<Long>();	
 	private Iterable<ArticleEntity> articles;
 	private long selectedArticle;
-	private List<String> pages;
+	private List<Integer> pages;
 	private int currentPage = 1;
 	private boolean displayPrevious;
 	private boolean displayNext;
@@ -47,10 +47,10 @@ public class HomeCommand {
 		this.selectedArticle = selectedArticle;
 	}	
 	
-	public List<String> getPages() {
+	public List<Integer> getPages() {
 		return pages;
 	}
-	public void setPages(List<String> pages) {
+	public void setPages(List<Integer> pages) {
 		this.pages = pages;
 	}
 	
