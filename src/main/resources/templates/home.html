@@ -68,7 +68,7 @@
 				
 				<div class="container-pagination">
 					<ul class="pager">
-					    <li th:if="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}(page=*{currentPage} - 1)}" class="disabled">Previous</a></li>
+					    <li th:if="*{disablePrevious}" class="previous disabled"><a href="#">Previous</a></li>
 					    <li th:unless="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}(page=*{currentPage} - 1)}">Previous</a></li>
 					</ul>
 					<ul class="pagination" th:each="page : *{pages}">					
@@ -76,7 +76,7 @@
 						<li th:unless="${#strings.equals(page, #strings.toString(command.currentPage))}"><a th:href="@{/home?currentPage={page}(page=${page})}" th:text="${page}"></a></li>
 				    </ul>
 				    <ul class="pager">
-				      <li th:if="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}(page=*{currentPage} + 1)}" class="disabled">Next</a></li>
+				      <li th:if="*{disableNext}" class="next disabled"><a href="#">Next</a></li>
 				      <li th:unless="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}(page=*{currentPage} + 1)}">Next</a></li>
 			 	    </ul>
 				</div>

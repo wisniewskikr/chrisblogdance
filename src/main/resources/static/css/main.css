@@ -45,7 +45,6 @@ body, html {
 	float: left;
 }
 
-a.disabled {
-  pointer-events: none;
-  cursor: default;
+li.disabled {	
+	cursor: not-allowed;
 }
