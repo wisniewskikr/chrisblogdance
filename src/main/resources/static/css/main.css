@@ -44,3 +44,8 @@ body, html {
 .pagination {
 	float: left;
 }
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}

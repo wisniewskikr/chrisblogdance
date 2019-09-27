@@ -53,15 +53,15 @@ public class HomeController {
 		command.setPages(pages);
 		
 		if (command.getCurrentPage() == 1) {
-			command.setDisplayPrevious(false);
+			command.setDisablePrevious(true);
 		} else {
-			command.setDisplayPrevious(true);
+			command.setDisablePrevious(false);
 		}
 		
 		if (command.getCurrentPage() == page.getTotalPages()) {
-			command.setDisplayNext(false);
+			command.setDisableNext(true);
 		} else {
-			command.setDisplayNext(true);
+			command.setDisableNext(false);
 		}
 		
 	}

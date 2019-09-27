@@ -15,8 +15,8 @@ public class HomeCommand {
 	private long selectedArticle;
 	private List<Integer> pages;
 	private int currentPage = 1;
-	private boolean displayPrevious;
-	private boolean displayNext;
+	private boolean disablePrevious;
+	private boolean disableNext;
 	
 	
 	public Iterable<DanceTypeEntity> getDanceTypes() {
@@ -61,18 +61,19 @@ public class HomeCommand {
 		this.currentPage = currentPage;
 	}
 	
-	public boolean isDisplayPrevious() {
-		return displayPrevious;
+	public boolean isDisablePrevious() {
+		return disablePrevious;
 	}
-	public void setDisplayPrevious(boolean displayPrevious) {
-		this.displayPrevious = displayPrevious;
+	public void setDisablePrevious(boolean disablePrevious) {
+		this.disablePrevious = disablePrevious;
 	}
 	
-	public boolean isDisplayNext() {
-		return displayNext;
+	public boolean isDisableNext() {
+		return disableNext;
 	}
-	public void setDisplayNext(boolean displayNext) {
-		this.displayNext = displayNext;
-	}			
+	public void setDisableNext(boolean disableNext) {
+		this.disableNext = disableNext;
+	}
+	
 
 }
