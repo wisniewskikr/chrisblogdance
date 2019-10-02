@@ -64,13 +64,13 @@
 				  </div>		    						
 				</div>
 				<div th:if="*{#lists.isEmpty(articles)}">
-					There are no articles.
+					There are no movies.
 				</div>
 				
-				<div class="container-pagination">
+				<div th:unless="*{#lists.isEmpty(articles)}" class="container-pagination">
 					<ul class="pager">
 					    <li th:if="*{disablePrevious}" class="previous disabled"><a href="#">Previous</a></li>
-					    <li th:unless="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}(page=*{currentPage} - 1)}">Previous</a></li>
+					    <li th:unless="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}(page=*{currentPage} - 1,selectedDanceTypes=*{selectedDanceTypes})}">Previous</a></li>
 					</ul>
 					<ul class="pagination" th:each="page : *{pages}">					
 					    <li th:if="${#strings.equals(page, #strings.toString(command.currentPage))}" class="active"><a href="#" th:text="${page}"></a></li>
@@ -78,7 +78,7 @@
 				    </ul>
 				    <ul class="pager">
 				      <li th:if="*{disableNext}" class="next disabled"><a href="#">Next</a></li>
-				      <li th:unless="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}(page=*{currentPage} + 1)}">Next</a></li>
+				      <li th:unless="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}(page=*{currentPage} + 1,selectedDanceTypes=*{selectedDanceTypes})}">Next</a></li>
 			 	    </ul>
 				</div>
 				
