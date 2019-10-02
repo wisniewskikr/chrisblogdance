@@ -38,7 +38,10 @@ public class HomeController {
 			command.setArticles(page.getContent());
 			handlePagination(command, page);
 		} else {
-			command.setArticles(articleRepository.findByDanceTypeIds(command.getSelectedDanceTypes()));
+			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2);	
+			Page<ArticleEntity> page = articleRepository.findByDanceTypeIdsAsPage(command.getSelectedDanceTypes(), pageable);
+			command.setArticles(page.getContent());
+			handlePagination(command, page);
 		}			
 		
 		return "home";

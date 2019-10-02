@@ -33,8 +33,8 @@
 			
 			<!-- Left -->
 			<div class="col-md-3 column">
-				<form th:action="@{{base}/home(base=${basePath})}" method="post">						
-										
+				<h3>Dance Types</h3>
+				<form th:action="@{{base}/home(base=${basePath})}" method="post">										
 					<div th:each="danceType : *{danceTypes}">
 						<div class="checkbox">					    	
 					    	<input type="checkbox" th:field="*{selectedDanceTypes}" th:value="${danceType.id}" onclick="document.querySelector('form').submit()"/>
@@ -47,6 +47,7 @@
 			
 			<!-- Right -->
 		    <div class="col-md-8 column">
+		    	<h3>Movies</h3>
 		    	<div th:each="article : *{articles}">
 		    		<hr/>
 		    		<div class="media">
