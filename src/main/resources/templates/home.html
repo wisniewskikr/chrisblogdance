@@ -47,7 +47,20 @@
 			
 			<!-- Right -->
 		    <div class="col-md-8 column">
+		    
 		    	<h3>Movies</h3>
+		    	<form class="form-inline form-sort">
+				  <label for="sel1">Sorting:</label>
+			      <select class="form-control" id="sel1">
+			        <option>title: increasing</option>
+			        <option>title: decreasing</option>
+			        <option>date: increasing</option>
+			        <option>date: decreasing</option>
+			        <option>pair: increasing</option>
+			        <option>pair: decreasing</option>
+			      </select>
+		      	</form>
+		     		    	
 		    	<div th:each="article : *{articles}">
 		    		<hr/>
 		    		<div class="media">
