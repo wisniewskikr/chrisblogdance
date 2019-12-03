@@ -38,11 +38,11 @@ body, html {
 }
 
 .pager {
-	float: left;
+	display: inline-block !important;
 }
 
 .pagination {
-	float: left;
+	display: inline-block !important;
 }
 
 li.disabled {	
@@ -50,5 +50,9 @@ li.disabled {
 }
 
 .form-sort {
+	text-align: center;
+}
+
+.container-pagination {
 	text-align: center;
 }
