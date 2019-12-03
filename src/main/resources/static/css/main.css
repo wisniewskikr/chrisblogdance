@@ -33,16 +33,20 @@ body, html {
 	margin-left: 0px !important;
 }
 
+.container-pagination {
+	text-align: center;
+}
+
 .pointer {
 	cursor: pointer;
 }
 
 .pager {
-	display: inline-block !important;
+	display: inline-block;
 }
 
 .pagination {
-	display: inline-block !important;
+	display: inline-block;
 }
 
 li.disabled {	
@@ -50,9 +54,5 @@ li.disabled {
 }
 
 .form-sort {
-	text-align: center;
-}
-
-.container-pagination {
 	text-align: center;
 }
