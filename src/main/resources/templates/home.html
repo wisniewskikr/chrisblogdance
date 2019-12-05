@@ -52,13 +52,8 @@
 		    
 			    	<h3>Movies</h3>		    	
 					  <label for="sel1">Sorting:</label>
-				      <select class="form-control" th:field="*{sorting}" onchange="document.querySelector('#formSorting').submit()">
-				        <option th:value="TITLE_INCREASING">title: increasing</option>
-				        <option th:value="TITLE_DECREASING">title: decreasing</option>
-				        <option th:value="DATE_INCREASING">date: increasing</option>
-				        <option th:value="DATE_DECREASING">date: decreasing</option>
-				        <option th:value="PAIR_INCREASING">pair: increasing</option>
-				        <option th:value="PAIR_DECREASING">pair: decreasing</option>
+				      <select class="form-control" th:field="*{selectedSorting}" onchange="document.querySelector('#formSorting').submit()">
+				        <option th:each="sort : *{sorting}" th:value="${sort.value}" th:text="${sort.text}"/>			        
 				      </select>		      	
 			     		    	
 			    	<div th:each="article : *{articles}">
@@ -83,15 +78,15 @@
 					<div th:unless="*{#lists.isEmpty(articles)}" class="container-pagination">
 						<ul class="pager">
 						    <li th:if="*{disablePrevious}" class="previous disabled"><a href="#">Previous</a></li>
-						    <li th:unless="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&sorting={sorting}(page=*{currentPage} - 1,selectedDanceTypes=*{selectedDanceTypes},sorting=*{sorting})}">Previous</a></li>
+						    <li th:unless="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&selectedSorting={selectedSorting}(page=*{currentPage} - 1,selectedDanceTypes=*{selectedDanceTypes},selectedSorting=*{selectedSorting})}">Previous</a></li>
 						</ul>
 						<ul class="pagination" th:each="page : *{pages}">					
 						    <li th:if="${#strings.equals(page, #strings.toString(command.currentPage))}" class="active"><a href="#" th:text="${page}"></a></li>
-							<li th:unless="${#strings.equals(page, #strings.toString(command.currentPage))}"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&sorting={sorting}(page=${page},selectedDanceTypes=*{selectedDanceTypes},sorting=*{sorting})}" th:text="${page}"></a></li>
+							<li th:unless="${#strings.equals(page, #strings.toString(command.currentPage))}"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&selectedSorting={selectedSorting}(page=${page},selectedDanceTypes=*{selectedDanceTypes},selectedSorting=*{selectedSorting})}" th:text="${page}"></a></li>
 					    </ul>
 					    <ul class="pager">
 					      <li th:if="*{disableNext}" class="next disabled"><a href="#">Next</a></li>
-					      <li th:unless="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&sorting={sorting}(page=*{currentPage} + 1,selectedDanceTypes=*{selectedDanceTypes},sorting=*{sorting})}">Next</a></li>
+					      <li th:unless="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&selectedSorting={selectedSorting}(page=*{currentPage} + 1,selectedDanceTypes=*{selectedDanceTypes},selectedSorting=*{selectedSorting})}">Next</a></li>
 				 	    </ul>
 					</div>				
 				

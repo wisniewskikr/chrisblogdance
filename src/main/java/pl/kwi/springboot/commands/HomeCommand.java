@@ -18,7 +18,8 @@ public class HomeCommand {
 	private int currentPage = 1;
 	private boolean disablePrevious;
 	private boolean disableNext;
-	private SortingEnum sorting = SortingEnum.TITLE_INCREASING;
+	private List<SortingEnum> sorting = new ArrayList<SortingEnum>();
+	private String selectedSorting = SortingEnum.TITLE_INCREASING.getValue();
 	
 	
 	public Iterable<DanceTypeEntity> getDanceTypes() {
@@ -77,12 +78,19 @@ public class HomeCommand {
 		this.disableNext = disableNext;
 	}
 	
-	public SortingEnum getSorting() {
+	public List<SortingEnum> getSorting() {
 		return sorting;
 	}
-	public void setSorting(SortingEnum sorting) {
+	public void setSorting(List<SortingEnum> sorting) {
 		this.sorting = sorting;
-	}		
+	}
+	
+	public String getSelectedSorting() {
+		return selectedSorting;
+	}
+	public void setSelectedSorting(String selectedSorting) {
+		this.selectedSorting = selectedSorting;
+	}			
 	
 
 }

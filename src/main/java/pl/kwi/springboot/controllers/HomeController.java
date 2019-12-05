@@ -1,6 +1,7 @@
 package pl.kwi.springboot.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import pl.kwi.springboot.commands.HomeCommand;
 import pl.kwi.springboot.db.entities.ArticleEntity;
 import pl.kwi.springboot.db.repositories.ArticleRepository;
 import pl.kwi.springboot.db.repositories.DanceTypeRepository;
+import pl.kwi.springboot.enums.SortingEnum;
 
 @Controller
 @RequestMapping(value="/home")
@@ -31,6 +33,7 @@ public class HomeController {
 			@ModelAttribute("command") HomeCommand command) {
 		
 		command.setDanceTypes(danceTypeRepository.findAll());
+		command.setSorting(Arrays.asList(SortingEnum.values()));
 				
 		if (command.getSelectedDanceTypes().isEmpty()) {
 			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2);	
