@@ -5,6 +5,7 @@ import java.util.List;
 
 import pl.kwi.springboot.db.entities.ArticleEntity;
 import pl.kwi.springboot.db.entities.DanceTypeEntity;
+import pl.kwi.springboot.enums.SortingEnum;
 
 public class HomeCommand {
 	
@@ -17,7 +18,7 @@ public class HomeCommand {
 	private int currentPage = 1;
 	private boolean disablePrevious;
 	private boolean disableNext;
-	private String sorting = "TITLE_INCREASING";
+	private SortingEnum sorting = SortingEnum.TITLE_INCREASING;
 	
 	
 	public Iterable<DanceTypeEntity> getDanceTypes() {
@@ -76,12 +77,12 @@ public class HomeCommand {
 		this.disableNext = disableNext;
 	}
 	
-	public String getSorting() {
+	public SortingEnum getSorting() {
 		return sorting;
 	}
-	public void setSorting(String sorting) {
+	public void setSorting(SortingEnum sorting) {
 		this.sorting = sorting;
-	}	
+	}		
 	
 
 }
