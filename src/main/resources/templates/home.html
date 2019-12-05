@@ -33,11 +33,12 @@
 			
 			<!-- Left -->
 			<div class="col-md-3 column">
-				<h3>Dance Types</h3>
-				<form th:action="@{{base}/home(base=${basePath})}" method="post">										
+				<form th:action="@{{base}/home(base=${basePath})}" method="post" id="formDanceTypes">
+				
+					<h3>Dance Types</h3>														
 					<div th:each="danceType : *{danceTypes}">
 						<div class="checkbox">					    	
-					    	<input type="checkbox" th:field="*{selectedDanceTypes}" th:value="${danceType.id}" onclick="document.querySelector('form').submit()"/>
+					    	<input type="checkbox" th:field="*{selectedDanceTypes}" th:value="${danceType.id}" onclick="document.querySelector('#formDanceTypes').submit()"/>
 					    	<label th:for="${#ids.prev('selectedDanceTypes')}" th:text="${danceType.name}"></label>
 					    </div>
 				    </div>
@@ -47,56 +48,54 @@
 			
 			<!-- Right -->
 		    <div class="col-md-8 column">
+		    	<form class="form-inline form-sort" th:action="@{{base}/home(base=${basePath})}" id="formSorting">
 		    
-		    	<h3>Movies</h3>
-		    	<form class="form-inline form-sort">
-				  <label for="sel1">Sorting:</label>
-			      <select class="form-control" id="sel1">
-			        <option>title: increasing</option>
-			        <option>title: decreasing</option>
-			        <option>date: increasing</option>
-			        <option>date: decreasing</option>
-			        <option>pair: increasing</option>
-			        <option>pair: decreasing</option>
-			      </select>
-		      	</form>
-		     		    	
-		    	<div th:each="article : *{articles}">
-		    		<hr/>
-		    		<div class="media">
-				    <div class="media-left">
-				    	<img th:src="@{/images/{thumb}(thumb=${article.thumb})}" class="media-object pointer openModal" style="width:240px" 
-				    	data-toggle="modal" data-target="#myModal" th:attr="youTube=${article.youTube}"/>
-				    </div>
-				    <div class="media-body">
-						<!-- a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a-->
-						<h4 th:text="${article.title}"></h4>
-						<div th:text="${article.date}"></div>
-						<div th:text="${article.pair}"></div>							
-				    </div>
-				  </div>		    						
-				</div>
-				<div th:if="*{#lists.isEmpty(articles)}">
-					There are no movies.
-				</div>
+			    	<h3>Movies</h3>		    	
+					  <label for="sel1">Sorting:</label>
+				      <select class="form-control" th:field="*{sorting}" onchange="document.querySelector('#formSorting').submit()">
+				        <option th:value="TITLE_INCREASING">title: increasing</option>
+				        <option th:value="TITLE_DECREASING">title: decreasing</option>
+				        <option th:value="DATE_INCREASING">date: increasing</option>
+				        <option th:value="DATE_DECREASING">date: decreasing</option>
+				        <option th:value="PAIR_INCREASING">pair: increasing</option>
+				        <option th:value="PAIR_DECREASING">pair: decreasing</option>
+				      </select>		      	
+			     		    	
+			    	<div th:each="article : *{articles}">
+			    		<hr/>
+			    		<div class="media">
+					    <div class="media-left">
+					    	<img th:src="@{/images/{thumb}(thumb=${article.thumb})}" class="media-object pointer openModal" style="width:240px" 
+					    	data-toggle="modal" data-target="#myModal" th:attr="youTube=${article.youTube}"/>
+					    </div>
+					    <div class="media-body">
+							<!-- a th:href="@{/home/article/{articleId}(articleId=${article.id})}" th:text="${article.title}"></a-->
+							<h4 th:text="${article.title}"></h4>
+							<div th:text="${article.date}"></div>
+							<div th:text="${article.pair}"></div>							
+					    </div>
+					  </div>		    						
+					</div>
+					<div th:if="*{#lists.isEmpty(articles)}">
+						There are no movies.
+					</div>
+					
+					<div th:unless="*{#lists.isEmpty(articles)}" class="container-pagination">
+						<ul class="pager">
+						    <li th:if="*{disablePrevious}" class="previous disabled"><a href="#">Previous</a></li>
+						    <li th:unless="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&sorting={sorting}(page=*{currentPage} - 1,selectedDanceTypes=*{selectedDanceTypes},sorting=*{sorting})}">Previous</a></li>
+						</ul>
+						<ul class="pagination" th:each="page : *{pages}">					
+						    <li th:if="${#strings.equals(page, #strings.toString(command.currentPage))}" class="active"><a href="#" th:text="${page}"></a></li>
+							<li th:unless="${#strings.equals(page, #strings.toString(command.currentPage))}"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&sorting={sorting}(page=${page},selectedDanceTypes=*{selectedDanceTypes},sorting=*{sorting})}" th:text="${page}"></a></li>
+					    </ul>
+					    <ul class="pager">
+					      <li th:if="*{disableNext}" class="next disabled"><a href="#">Next</a></li>
+					      <li th:unless="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}&sorting={sorting}(page=*{currentPage} + 1,selectedDanceTypes=*{selectedDanceTypes},sorting=*{sorting})}">Next</a></li>
+				 	    </ul>
+					</div>				
 				
-				<div th:unless="*{#lists.isEmpty(articles)}" class="container-pagination">
-					<ul class="pager">
-					    <li th:if="*{disablePrevious}" class="previous disabled"><a href="#">Previous</a></li>
-					    <li th:unless="*{disablePrevious}" class="previous"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}(page=*{currentPage} - 1,selectedDanceTypes=*{selectedDanceTypes})}">Previous</a></li>
-					</ul>
-					<ul class="pagination" th:each="page : *{pages}">					
-					    <li th:if="${#strings.equals(page, #strings.toString(command.currentPage))}" class="active"><a href="#" th:text="${page}"></a></li>
-						<li th:unless="${#strings.equals(page, #strings.toString(command.currentPage))}"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}(page=${page},selectedDanceTypes=*{selectedDanceTypes})}" th:text="${page}"></a></li>
-				    </ul>
-				    <ul class="pager">
-				      <li th:if="*{disableNext}" class="next disabled"><a href="#">Next</a></li>
-				      <li th:unless="*{disableNext}" class="next"><a th:href="@{/home?currentPage={page}&selectedDanceTypes={selectedDanceTypes}(page=*{currentPage} + 1,selectedDanceTypes=*{selectedDanceTypes})}">Next</a></li>
-			 	    </ul>
-				</div>
-				
-				
-				
+				</form>
 		    </div>		    
 		
 		</div>    

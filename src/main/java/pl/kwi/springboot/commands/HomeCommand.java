@@ -17,6 +17,7 @@ public class HomeCommand {
 	private int currentPage = 1;
 	private boolean disablePrevious;
 	private boolean disableNext;
+	private String sorting = "TITLE_INCREASING";
 	
 	
 	public Iterable<DanceTypeEntity> getDanceTypes() {
@@ -74,6 +75,13 @@ public class HomeCommand {
 	public void setDisableNext(boolean disableNext) {
 		this.disableNext = disableNext;
 	}
+	
+	public String getSorting() {
+		return sorting;
+	}
+	public void setSorting(String sorting) {
+		this.sorting = sorting;
+	}	
 	
 
 }

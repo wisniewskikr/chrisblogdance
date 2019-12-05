@@ -1,0 +1,7 @@
+package pl.kwi.springboot.enums;
+
+public enum SortingEnum {
+	
+	TITLE_INCREASING, TITLE_DECREASING, DATE_INCREASING, DATE_DECREASING, PAIR_INCREASING, PAIR_DECREASING;
+
+}
