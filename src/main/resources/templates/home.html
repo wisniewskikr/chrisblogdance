@@ -51,7 +51,7 @@
 						  <label for="sel1">Sorting:</label>
 					      <select class="form-control" th:field="*{selectedSorting}" onchange="document.querySelector('#form').submit()">
 					        <option th:each="sort : *{sorting}" th:value="${sort.value}" th:text="${sort.text}"/>			        
-					      </select>	
+					      </select>				      
 				      </div>	      	
 			     		    	
 			    	<div th:each="article : *{articles}">

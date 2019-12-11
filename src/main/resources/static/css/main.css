@@ -53,14 +53,14 @@ li.disabled {
 	cursor: not-allowed;
 }
 
-.form-sort {
-	text-align: center;
-}
-
 .container-sorting {
 	text-align: center;
 }
 
 .container-sorting select {
 	display: inline-block;
+}
+
+.form-control {
+	width: 160px !important;
 }
