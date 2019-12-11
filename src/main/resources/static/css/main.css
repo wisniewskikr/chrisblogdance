@@ -56,3 +56,11 @@ li.disabled {
 .form-sort {
 	text-align: center;
 }
+
+.container-sorting {
+	text-align: center;
+}
+
+.container-sorting select {
+	display: inline-block;
+}

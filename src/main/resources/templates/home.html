@@ -30,31 +30,29 @@
 	
 	<div class="container container-margin" th:object="${command}">
 		<div class="row">
-			
+		<form th:action="@{{base}/home(base=${basePath})}" method="post" id="form">	
+		
 			<!-- Left -->
 			<div class="col-md-3 column">
-				<form th:action="@{{base}/home(base=${basePath})}" method="post" id="formDanceTypes">
-				
-					<h3>Dance Types</h3>														
-					<div th:each="danceType : *{danceTypes}">
-						<div class="checkbox">					    	
-					    	<input type="checkbox" th:field="*{selectedDanceTypes}" th:value="${danceType.id}" onclick="document.querySelector('#formDanceTypes').submit()"/>
-					    	<label th:for="${#ids.prev('selectedDanceTypes')}" th:text="${danceType.name}"></label>
-					    </div>
+				<h3>Dance Types</h3>														
+				<div th:each="danceType : *{danceTypes}">
+					<div class="checkbox">					    	
+				    	<input type="checkbox" th:field="*{selectedDanceTypes}" th:value="${danceType.id}" onclick="document.querySelector('#form').submit()"/>
+				    	<label th:for="${#ids.prev('selectedDanceTypes')}" th:text="${danceType.name}"></label>
 				    </div>
-					
-				</form>			
+			    </div>
 			</div>
 			
 			<!-- Right -->
 		    <div class="col-md-8 column">
-		    	<form class="form-inline form-sort" th:action="@{{base}/home(base=${basePath})}" id="formSorting">
 		    
-			    	<h3>Movies</h3>		    	
-					  <label for="sel1">Sorting:</label>
-				      <select class="form-control" th:field="*{selectedSorting}" onchange="document.querySelector('#formSorting').submit()">
-				        <option th:each="sort : *{sorting}" th:value="${sort.value}" th:text="${sort.text}"/>			        
-				      </select>		      	
+			    	<h3>Movies</h3>	
+			    		<div class="container-sorting">	    	
+						  <label for="sel1">Sorting:</label>
+					      <select class="form-control" th:field="*{selectedSorting}" onchange="document.querySelector('#form').submit()">
+					        <option th:each="sort : *{sorting}" th:value="${sort.value}" th:text="${sort.text}"/>			        
+					      </select>	
+				      </div>	      	
 			     		    	
 			    	<div th:each="article : *{articles}">
 			    		<hr/>
@@ -90,9 +88,9 @@
 				 	    </ul>
 					</div>				
 				
-				</form>
 		    </div>		    
 		
+		</form>	
 		</div>    
 	</div>
 	
