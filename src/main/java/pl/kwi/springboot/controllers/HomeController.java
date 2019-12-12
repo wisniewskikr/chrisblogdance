@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,12 +37,12 @@ public class HomeController {
 		command.setSorting(Arrays.asList(SortingEnum.values()));
 				
 		if (command.getSelectedDanceTypes().isEmpty()) {
-			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2);	
+			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2, handleSorting(command.getSelectedSorting()));	
 			Page<ArticleEntity> page = articleRepository.findAllAsPage(pageable);
 			command.setArticles(page.getContent());
 			handlePagination(command, page);
 		} else {
-			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2);	
+			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2, handleSorting(command.getSelectedSorting()));	
 			Page<ArticleEntity> page = articleRepository.findByDanceTypeIdsAsPage(command.getSelectedDanceTypes(), pageable);
 			command.setArticles(page.getContent());
 			handlePagination(command, page);
@@ -129,6 +130,29 @@ public class HomeController {
 		
 		
 		return result;
+		
+	}
+	
+	private Sort handleSorting(String selectedSorting) {
+		
+		SortingEnum sortingEnum = SortingEnum.getEnum(selectedSorting);
+		
+		switch (sortingEnum) {
+		case TITLE_INCREASING:
+			return Sort.by(Sort.Direction.ASC, "title");
+		case TITLE_DECREASING:
+			return Sort.by(Sort.Direction.DESC, "title");	
+		case DATE_INCREASING:
+			return Sort.by(Sort.Direction.ASC, "date");
+		case DATE_DECREASING:
+			return Sort.by(Sort.Direction.DESC, "date");
+		case PAIR_INCREASING:
+			return Sort.by(Sort.Direction.ASC, "pair");
+		case PAIR_DECREASING:
+			return Sort.by(Sort.Direction.DESC, "pair");	
+		default:
+			return Sort.by(Sort.Direction.DESC, "title");
+		}
 		
 	}
 

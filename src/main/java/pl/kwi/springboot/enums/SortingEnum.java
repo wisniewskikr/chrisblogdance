@@ -29,5 +29,11 @@ public enum SortingEnum {
 		this.value = value;
 	}
 	
+	public static SortingEnum getEnum(String value) {
+        for(SortingEnum v : values())
+            if(v.getValue().equalsIgnoreCase(value)) return v;
+        throw new IllegalArgumentException();
+    }
+	
 
 }
