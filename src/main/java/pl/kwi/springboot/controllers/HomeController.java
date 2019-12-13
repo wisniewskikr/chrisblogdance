@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +30,9 @@ public class HomeController {
 	@Autowired
 	private ArticleRepository articleRepository;
 	
+	@Value(value = "${article.pagination.count}")
+    private int paginationCount;
+	
 	@RequestMapping
 	public String displayPage(
 			@ModelAttribute("command") HomeCommand command) {
@@ -37,12 +41,12 @@ public class HomeController {
 		command.setSorting(Arrays.asList(SortingEnum.values()));
 				
 		if (command.getSelectedDanceTypes().isEmpty()) {
-			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2, handleSorting(command.getSelectedSorting()));	
+			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, paginationCount, handleSorting(command.getSelectedSorting()));	
 			Page<ArticleEntity> page = articleRepository.findAllAsPage(pageable);
 			command.setArticles(page.getContent());
 			handlePagination(command, page);
 		} else {
-			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, 2, handleSorting(command.getSelectedSorting()));	
+			Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, paginationCount, handleSorting(command.getSelectedSorting()));	
 			Page<ArticleEntity> page = articleRepository.findByDanceTypeIdsAsPage(command.getSelectedDanceTypes(), pageable);
 			command.setArticles(page.getContent());
 			handlePagination(command, page);
