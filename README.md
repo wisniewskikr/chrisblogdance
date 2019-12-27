@@ -37,3 +37,6 @@ Dance types:
 
 Create Thumbnail:
 https://boingboing.net/features/getthumbs
+
+Background dance images:
+https://unsplash.com/images/things/dance
